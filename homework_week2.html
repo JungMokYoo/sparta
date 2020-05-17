@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기획서</title>
+</head>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .wrap{
+        position: relative;  /*부모 블럭선언 */
+        margin :10px auto;
+        width:900px;
+    }
+    .pic{
+        position: relative;/*자식 블럭선언*/
+        height: 400px;
+        width: 750px;
+        margin: 36px auto ;
+        background-image: url("https://netrinoimages.s3.eu-west-2.amazonaws.com/2016/05/03/411834/161677/grumman_f14_tomcat_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_1800099_o.jpg" );
+        background-position : center ; /*사진 가운데로*/
+        background-size: cover; /*.pic 클래스 div 에 맞춤*/
+        right: 20px;
+    }
+    .product{
+        display: flex; /*블럭 가로로 정렬*/
+        position: relative; /*부모 선언*/
+        align-items: center;
+    }
+    .price{ 
+        position:relative; /*자식 블럭 선언(선언시 top,right,left,bottom으로 이동 가능)*/
+        top: 8px;
+        left: 20px;
+        opacity: 0.5; /*투명도*/
+    }
+    .form-group{
+        height: 50px; /*네모들 전체설정*/
+    }
+    .form-control{ /*네모칸 개별 공통 설정*/
+        position: relative;
+        width:200px;
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 8px;
+        left:20px;
+        text-align: center;
+    }
+    /* 네모칸 개별 설정*/
+     #box2{position: relative;left:73px;height:35px;width:202px;text-align: center;}
+     #box3{position: relative;left:72px;}
+     #box4{position: relative;left:40px;}
+    .btn{ /* 주문하기 버튼 설정*/
+         text-align: center;
+         background-color:red;
+         color: white;
+         border :2px solid black;
+         width:180px;
+         height: 60px;
+         margin:auto;
+         border-radius: 13px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+    }
+</style>
+<!-- jquery 와 ajax호출 (이거 안쓰면 $ is not define 에러 뜸)-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    // jquery로 alert 구현
+    function hey() {
+        let name = $('#box1').val();
+        let quan = $('#box2 option:selected').val(); //혹시몰라서 select 용 설정
+        let add = $('#box3').val();
+        let phone = $('#box4').val();
+        if(name == ''){
+            alert('성함을 입력해주세요.')
+        }else if (quan == ''){
+            alert('수량을 선택해주세요')
+        }else if(add == ''){
+            alert('주소를 입력해주세요')
+        }else if(phone == ''){
+            alert('전화번호를 입력해주세요')
+        } else{
+        alert("주문이 완료되었습니다.");
+        }
+      }
+</script>
+<script>
+    $(document).ready(function(){
+    // 여기에 환율 API Ajax 요청을 하면 되겠죠? ajax 로 달러 구현
+         $.ajax({
+            type: "GET",
+            url: "https://api.manana.kr/exchange/rate.json",
+            data: {},
+            success: function (response) {
+                let list = response[1]['rate'];
+                let dollar=`${list}`;
+                $('#homework').append(dollar);
+            },
+        });
+   
+      });
+</script>
+<body>
+    <div class="wrap">
+        <div class="pic"></div>
+        <div class="product">
+            <div class="title">
+                <h1>F-14 톰캣</h1>
+            </div>
+            <div class="price">
+                <h4>가격: 46,000,000,000 원 / 개</h3>
+            </div>
+        </div>
+        <p class="product">F-14가 전문가나 마니아 층을 넘어 대중에게 많이 알려지게 된 계기는 1986년 제작된 영화 '탑건(Top Gun)' 때문이다.<br> 
+            전투기에 대해 잘 모르는 이들마저도 화면에 등장한 F-14의 인상적인 모습에 매료되었다.<br> 
+            최초 실전 기록은 1981년 시드라 만(Gulf of Sidra)에서 초계 중이던 제41전투비행대(VF-41) <br>
+            소속 F-14가 적대 행위를 보이던 리비아 공군의 Su-22를 격추시킨 것이었고 이후 1989년에도 비슷한 사례가 있었다.</p>
+        <div class="product"><h1>주문하기</h1></div>
+
+        <div style="color: blue;">달러-원 환율:</p><p style="color:" id="homework"></div>
+        
+        <div class="customer_info" id="boss" >
+            <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">주문자 성함:</label>
+                  <input type="email" class="form-control" id='box1'>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">수량:</label>
+                  <select class="form-control" id='box2'>
+                    <option value="" id="empty">--  수량을 선택 하세요 --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">주소:</label>
+                    <input type="email" class="form-control" id='box3'>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">전화번호:</label>
+                    <input type="email" class="form-control" id='box4'>
+                  </div>
+              </form>
+        </div>
+        <button onclick="hey()"type="button" class="btn"><h2>주문하기</h2></button>
+    </div>
+</body>
+</html>
