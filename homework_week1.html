@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기획서</title>
+</head>
+<style>
+    body {
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    }
+    .wrap{
+        position: relative;  
+        margin :10px auto;
+        width:900px;
+    }
+    .pic{
+        position: relative;
+        height: 400px;
+        width: 750px;
+        margin: 36px auto ;
+        background-image: url("https://netrinoimages.s3.eu-west-2.amazonaws.com/2016/05/03/411834/161677/grumman_f14_tomcat_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_1800099_o.jpg" );
+        background-position : center ;
+        background-size: cover;
+        right: 20px;
+    }
+    .product{
+        display: flex;
+        position: relative;
+        align-items: center;
+    }
+    .price{ 
+        position:relative;
+        top: 8px;
+        left: 20px;
+        opacity: 0.5;
+    }
+    .form-group{
+        height: 50px;
+    }
+    .form-control{
+        position: relative;
+        width:200px;
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 8px;
+        left:20px;
+    }
+     #box2{position: relative;left:73px;height:35px;width:202px;}
+     #box3{position: relative;left:72px;}
+     #box4{position: relative;left:40px;}
+    .btn{
+         text-align: center;
+         background-color:red;
+         color: white;
+         border :2px solid black;
+         width:180px;
+         height: 60px;
+         margin:auto;
+         border-radius: 13px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+    }
+</style>
+<script>
+    function hey() {
+        alert("주문이 완료되었습니다.");
+      }
+</script>
+<body>
+    
+    <div class="wrap">
+        <div class="pic"></div>
+        <div class="product">
+            <div class="title">
+                <h1>F-14 톰캣</h1>
+            </div>
+            <div class="price">
+                <h4>가격: 46,000,000,000 원 / 개</h3>
+            </div>
+        </div>
+        <p class="product">F-14가 전문가나 마니아 층을 넘어 대중에게 많이 알려지게 된 계기는 1986년 제작된 영화 '탑건(Top Gun)' 때문이다.<br> 
+            전투기에 대해 잘 모르는 이들마저도 화면에 등장한 F-14의 인상적인 모습에 매료되었다.<br> 
+            최초 실전 기록은 1981년 시드라 만(Gulf of Sidra)에서 초계 중이던 제41전투비행대(VF-41) <br>
+            소속 F-14가 적대 행위를 보이던 리비아 공군의 Su-22를 격추시킨 것이었고 이후 1989년에도 비슷한 사례가 있었다.</p>
+        <div class="product"><h1>주문하기</h1></div>
+        <div class="customer_info" id="boss" >
+            <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">주문자 성함:</label>
+                  <input type="email" class="form-control" id="box1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">수량:</label>
+                  <select class="form-control" id="box2">
+                    <option></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">주소:</label>
+                    <input type="email" class="form-control" id="box3">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">전화번호:</label>
+                    <input type="email" class="form-control" id="box4">
+                  </div>
+              </form>
+        </div>
+        <button onclick="hey()"type="button" class="btn"><h2>주문하기</h2></button>
+    </div>
+</body>
+</html>
